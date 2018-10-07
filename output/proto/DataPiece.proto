@@ -1,0 +1,13 @@
+syntax = "proto3";
+package WS.Data;
+message DataPiece
+{
+	//唯一标识
+	int32 id = 1;
+	//初始坐标
+	string position = 2;
+	//所属关卡
+	string levelId = 3;
+	//布局信息
+	string layout = 4;
+}

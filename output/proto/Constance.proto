@@ -1,0 +1,11 @@
+syntax = "proto3";
+package WS.Data;
+import "DataLetter.proto";
+import "DataPiece.proto";
+import "DataLevel.proto";
+message Constance
+{
+	repeated DataLetter letterList = 1;
+	repeated DataPiece pieceList = 2;
+	repeated DataLevel levelList = 3;
+}
