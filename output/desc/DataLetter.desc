@@ -9,7 +9,7 @@ DataLetter
 unlockLetterId (RunlockLetterId*
 horizentalLinkId (RhorizentalLinkId&
 verticalLinkId (RverticalLinkId
-pieceId (RpieceId
+pieceId (RpieceId
 
 pieceIndex (R
 pieceIndexbproto3

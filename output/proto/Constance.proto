@@ -1,11 +1,19 @@
 syntax = "proto3";
 package WS.Data;
 import "DataLetter.proto";
+import "DataPayment.proto";
+import "DataBG.proto";
 import "DataPiece.proto";
 import "DataLevel.proto";
+import "DataGlobal.proto";
+import "DataTool.proto";
 message Constance
 {
 	repeated DataLetter letterList = 1;
-	repeated DataPiece pieceList = 2;
-	repeated DataLevel levelList = 3;
+	repeated DataPayment paymentList = 2;
+	repeated DataBG bGList = 3;
+	repeated DataPiece pieceList = 4;
+	repeated DataLevel levelList = 5;
+	repeated DataGlobal globalList = 6;
+	repeated DataTool toolList = 7;
 }

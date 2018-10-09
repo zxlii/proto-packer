@@ -1,0 +1,15 @@
+syntax = "proto3";
+package WS.Data;
+message DataTool
+{
+	//唯一标识
+	int32 id = 1;
+	//显示名称
+	string showName = 2;
+	//显示图片
+	string showIcon = 3;
+	//类型
+	int32 type = 4;
+	//开放等级
+	int32 openLevel = 5;
+}

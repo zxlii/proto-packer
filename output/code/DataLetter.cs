@@ -25,7 +25,7 @@ namespace WS.Data {
             "ChBEYXRhTGV0dGVyLnByb3RvEgdXUy5EYXRhIqUBCgpEYXRhTGV0dGVyEgoK",
             "AmlkGAEgASgFEg4KBmxldHRlchgCIAEoCRIMCgR0eXBlGAMgASgFEhYKDnVu",
             "bG9ja0xldHRlcklkGAQgASgFEhgKEGhvcml6ZW50YWxMaW5rSWQYBSABKAUS",
-            "FgoOdmVydGljYWxMaW5rSWQYBiABKAUSDwoHcGllY2VJZBgHIAEoCBISCgpw",
+            "FgoOdmVydGljYWxMaW5rSWQYBiABKAUSDwoHcGllY2VJZBgHIAEoBRISCgpw",
             "aWVjZUluZGV4GAggASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -162,12 +162,12 @@ namespace WS.Data {
 
     /// <summary>Field number for the "pieceId" field.</summary>
     public const int PieceIdFieldNumber = 7;
-    private bool pieceId_;
+    private int pieceId_;
     /// <summary>
     ///所属pieceId
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool PieceId {
+    public int PieceId {
       get { return pieceId_; }
       set {
         pieceId_ = value;
@@ -221,7 +221,7 @@ namespace WS.Data {
       if (UnlockLetterId != 0) hash ^= UnlockLetterId.GetHashCode();
       if (HorizentalLinkId != 0) hash ^= HorizentalLinkId.GetHashCode();
       if (VerticalLinkId != 0) hash ^= VerticalLinkId.GetHashCode();
-      if (PieceId != false) hash ^= PieceId.GetHashCode();
+      if (PieceId != 0) hash ^= PieceId.GetHashCode();
       if (PieceIndex != 0) hash ^= PieceIndex.GetHashCode();
       return hash;
     }
@@ -257,9 +257,9 @@ namespace WS.Data {
         output.WriteRawTag(48);
         output.WriteInt32(VerticalLinkId);
       }
-      if (PieceId != false) {
+      if (PieceId != 0) {
         output.WriteRawTag(56);
-        output.WriteBool(PieceId);
+        output.WriteInt32(PieceId);
       }
       if (PieceIndex != 0) {
         output.WriteRawTag(64);
@@ -288,8 +288,8 @@ namespace WS.Data {
       if (VerticalLinkId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(VerticalLinkId);
       }
-      if (PieceId != false) {
-        size += 1 + 1;
+      if (PieceId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PieceId);
       }
       if (PieceIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PieceIndex);
@@ -320,7 +320,7 @@ namespace WS.Data {
       if (other.VerticalLinkId != 0) {
         VerticalLinkId = other.VerticalLinkId;
       }
-      if (other.PieceId != false) {
+      if (other.PieceId != 0) {
         PieceId = other.PieceId;
       }
       if (other.PieceIndex != 0) {
@@ -361,7 +361,7 @@ namespace WS.Data {
             break;
           }
           case 56: {
-            PieceId = input.ReadBool();
+            PieceId = input.ReadInt32();
             break;
           }
           case 64: {

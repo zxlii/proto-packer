@@ -1,9 +1,15 @@
 
-ý
-Constance.protoWS.DataDataLetter.protoDataPiece.protoDataLevel.proto"¤
+…
+Constance.protoWS.DataDataLetter.protoDataPayment.protoDataBG.protoDataPiece.protoDataLevel.protoDataGlobal.protoDataTool.proto"é
 	Constance3
 
 letterList (2.WS.Data.DataLetterR
-letterList0
-	pieceList (2.WS.Data.DataPieceR	pieceList0
-	levelList (2.WS.Data.DataLevelR	levelListbproto3
+letterList6
+paymentList (2.WS.Data.DataPaymentRpaymentList'
+bGList (2.WS.Data.DataBGRbGList0
+	pieceList (2.WS.Data.DataPieceR	pieceList0
+	levelList (2.WS.Data.DataLevelR	levelList3
+
+globalList (2.WS.Data.DataGlobalR
+globalList-
+toolList (2.WS.Data.DataToolRtoolListbproto3

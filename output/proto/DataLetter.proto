@@ -15,7 +15,7 @@ message DataLetter
 	//下侧链接的块
 	int32 verticalLinkId = 6;
 	//所属pieceId
-	bool pieceId = 7;
+	int32 pieceId = 7;
 	//piece中的索引，一维（从左到右从上到下
 	int32 pieceIndex = 8;
 }

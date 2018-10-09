@@ -7,7 +7,7 @@ message DataPiece
 	//初始坐标
 	string position = 2;
 	//所属关卡
-	string levelId = 3;
+	int32 levelId = 3;
 	//布局信息
 	string layout = 4;
 }

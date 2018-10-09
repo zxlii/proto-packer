@@ -23,14 +23,19 @@ namespace WS.Data {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9Db25zdGFuY2UucHJvdG8SB1dTLkRhdGEaEERhdGFMZXR0ZXIucHJvdG8a",
-            "D0RhdGFQaWVjZS5wcm90bxoPRGF0YUxldmVsLnByb3RvIoIBCglDb25zdGFu",
-            "Y2USJwoKbGV0dGVyTGlzdBgBIAMoCzITLldTLkRhdGEuRGF0YUxldHRlchIl",
-            "CglwaWVjZUxpc3QYAiADKAsyEi5XUy5EYXRhLkRhdGFQaWVjZRIlCglsZXZl",
-            "bExpc3QYAyADKAsyEi5XUy5EYXRhLkRhdGFMZXZlbGIGcHJvdG8z"));
+            "EURhdGFQYXltZW50LnByb3RvGgxEYXRhQkcucHJvdG8aD0RhdGFQaWVjZS5w",
+            "cm90bxoPRGF0YUxldmVsLnByb3RvGhBEYXRhR2xvYmFsLnByb3RvGg5EYXRh",
+            "VG9vbC5wcm90byKcAgoJQ29uc3RhbmNlEicKCmxldHRlckxpc3QYASADKAsy",
+            "Ey5XUy5EYXRhLkRhdGFMZXR0ZXISKQoLcGF5bWVudExpc3QYAiADKAsyFC5X",
+            "Uy5EYXRhLkRhdGFQYXltZW50Eh8KBmJHTGlzdBgDIAMoCzIPLldTLkRhdGEu",
+            "RGF0YUJHEiUKCXBpZWNlTGlzdBgEIAMoCzISLldTLkRhdGEuRGF0YVBpZWNl",
+            "EiUKCWxldmVsTGlzdBgFIAMoCzISLldTLkRhdGEuRGF0YUxldmVsEicKCmds",
+            "b2JhbExpc3QYBiADKAsyEy5XUy5EYXRhLkRhdGFHbG9iYWwSIwoIdG9vbExp",
+            "c3QYByADKAsyES5XUy5EYXRhLkRhdGFUb29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::WS.Data.DataLetterReflection.Descriptor, global::WS.Data.DataPieceReflection.Descriptor, global::WS.Data.DataLevelReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::WS.Data.DataLetterReflection.Descriptor, global::WS.Data.DataPaymentReflection.Descriptor, global::WS.Data.DataBGReflection.Descriptor, global::WS.Data.DataPieceReflection.Descriptor, global::WS.Data.DataLevelReflection.Descriptor, global::WS.Data.DataGlobalReflection.Descriptor, global::WS.Data.DataToolReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::WS.Data.Constance), global::WS.Data.Constance.Parser, new[]{ "LetterList", "PieceList", "LevelList" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::WS.Data.Constance), global::WS.Data.Constance.Parser, new[]{ "LetterList", "PaymentList", "BGList", "PieceList", "LevelList", "GlobalList", "ToolList" }, null, null, null)
           }));
     }
     #endregion
@@ -62,8 +67,12 @@ namespace WS.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Constance(Constance other) : this() {
       letterList_ = other.letterList_.Clone();
+      paymentList_ = other.paymentList_.Clone();
+      bGList_ = other.bGList_.Clone();
       pieceList_ = other.pieceList_.Clone();
       levelList_ = other.levelList_.Clone();
+      globalList_ = other.globalList_.Clone();
+      toolList_ = other.toolList_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -81,10 +90,30 @@ namespace WS.Data {
       get { return letterList_; }
     }
 
+    /// <summary>Field number for the "paymentList" field.</summary>
+    public const int PaymentListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::WS.Data.DataPayment> _repeated_paymentList_codec
+        = pb::FieldCodec.ForMessage(18, global::WS.Data.DataPayment.Parser);
+    private readonly pbc::RepeatedField<global::WS.Data.DataPayment> paymentList_ = new pbc::RepeatedField<global::WS.Data.DataPayment>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::WS.Data.DataPayment> PaymentList {
+      get { return paymentList_; }
+    }
+
+    /// <summary>Field number for the "bGList" field.</summary>
+    public const int BGListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::WS.Data.DataBG> _repeated_bGList_codec
+        = pb::FieldCodec.ForMessage(26, global::WS.Data.DataBG.Parser);
+    private readonly pbc::RepeatedField<global::WS.Data.DataBG> bGList_ = new pbc::RepeatedField<global::WS.Data.DataBG>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::WS.Data.DataBG> BGList {
+      get { return bGList_; }
+    }
+
     /// <summary>Field number for the "pieceList" field.</summary>
-    public const int PieceListFieldNumber = 2;
+    public const int PieceListFieldNumber = 4;
     private static readonly pb::FieldCodec<global::WS.Data.DataPiece> _repeated_pieceList_codec
-        = pb::FieldCodec.ForMessage(18, global::WS.Data.DataPiece.Parser);
+        = pb::FieldCodec.ForMessage(34, global::WS.Data.DataPiece.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataPiece> pieceList_ = new pbc::RepeatedField<global::WS.Data.DataPiece>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataPiece> PieceList {
@@ -92,13 +121,33 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "levelList" field.</summary>
-    public const int LevelListFieldNumber = 3;
+    public const int LevelListFieldNumber = 5;
     private static readonly pb::FieldCodec<global::WS.Data.DataLevel> _repeated_levelList_codec
-        = pb::FieldCodec.ForMessage(26, global::WS.Data.DataLevel.Parser);
+        = pb::FieldCodec.ForMessage(42, global::WS.Data.DataLevel.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLevel> levelList_ = new pbc::RepeatedField<global::WS.Data.DataLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLevel> LevelList {
       get { return levelList_; }
+    }
+
+    /// <summary>Field number for the "globalList" field.</summary>
+    public const int GlobalListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::WS.Data.DataGlobal> _repeated_globalList_codec
+        = pb::FieldCodec.ForMessage(50, global::WS.Data.DataGlobal.Parser);
+    private readonly pbc::RepeatedField<global::WS.Data.DataGlobal> globalList_ = new pbc::RepeatedField<global::WS.Data.DataGlobal>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::WS.Data.DataGlobal> GlobalList {
+      get { return globalList_; }
+    }
+
+    /// <summary>Field number for the "toolList" field.</summary>
+    public const int ToolListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::WS.Data.DataTool> _repeated_toolList_codec
+        = pb::FieldCodec.ForMessage(58, global::WS.Data.DataTool.Parser);
+    private readonly pbc::RepeatedField<global::WS.Data.DataTool> toolList_ = new pbc::RepeatedField<global::WS.Data.DataTool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::WS.Data.DataTool> ToolList {
+      get { return toolList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -115,8 +164,12 @@ namespace WS.Data {
         return true;
       }
       if(!letterList_.Equals(other.letterList_)) return false;
+      if(!paymentList_.Equals(other.paymentList_)) return false;
+      if(!bGList_.Equals(other.bGList_)) return false;
       if(!pieceList_.Equals(other.pieceList_)) return false;
       if(!levelList_.Equals(other.levelList_)) return false;
+      if(!globalList_.Equals(other.globalList_)) return false;
+      if(!toolList_.Equals(other.toolList_)) return false;
       return true;
     }
 
@@ -124,8 +177,12 @@ namespace WS.Data {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= letterList_.GetHashCode();
+      hash ^= paymentList_.GetHashCode();
+      hash ^= bGList_.GetHashCode();
       hash ^= pieceList_.GetHashCode();
       hash ^= levelList_.GetHashCode();
+      hash ^= globalList_.GetHashCode();
+      hash ^= toolList_.GetHashCode();
       return hash;
     }
 
@@ -137,16 +194,24 @@ namespace WS.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       letterList_.WriteTo(output, _repeated_letterList_codec);
+      paymentList_.WriteTo(output, _repeated_paymentList_codec);
+      bGList_.WriteTo(output, _repeated_bGList_codec);
       pieceList_.WriteTo(output, _repeated_pieceList_codec);
       levelList_.WriteTo(output, _repeated_levelList_codec);
+      globalList_.WriteTo(output, _repeated_globalList_codec);
+      toolList_.WriteTo(output, _repeated_toolList_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
       size += letterList_.CalculateSize(_repeated_letterList_codec);
+      size += paymentList_.CalculateSize(_repeated_paymentList_codec);
+      size += bGList_.CalculateSize(_repeated_bGList_codec);
       size += pieceList_.CalculateSize(_repeated_pieceList_codec);
       size += levelList_.CalculateSize(_repeated_levelList_codec);
+      size += globalList_.CalculateSize(_repeated_globalList_codec);
+      size += toolList_.CalculateSize(_repeated_toolList_codec);
       return size;
     }
 
@@ -156,8 +221,12 @@ namespace WS.Data {
         return;
       }
       letterList_.Add(other.letterList_);
+      paymentList_.Add(other.paymentList_);
+      bGList_.Add(other.bGList_);
       pieceList_.Add(other.pieceList_);
       levelList_.Add(other.levelList_);
+      globalList_.Add(other.globalList_);
+      toolList_.Add(other.toolList_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -173,11 +242,27 @@ namespace WS.Data {
             break;
           }
           case 18: {
-            pieceList_.AddEntriesFrom(input, _repeated_pieceList_codec);
+            paymentList_.AddEntriesFrom(input, _repeated_paymentList_codec);
             break;
           }
           case 26: {
+            bGList_.AddEntriesFrom(input, _repeated_bGList_codec);
+            break;
+          }
+          case 34: {
+            pieceList_.AddEntriesFrom(input, _repeated_pieceList_codec);
+            break;
+          }
+          case 42: {
             levelList_.AddEntriesFrom(input, _repeated_levelList_codec);
+            break;
+          }
+          case 50: {
+            globalList_.AddEntriesFrom(input, _repeated_globalList_codec);
+            break;
+          }
+          case 58: {
+            toolList_.AddEntriesFrom(input, _repeated_toolList_codec);
             break;
           }
         }
