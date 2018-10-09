@@ -1,0 +1,14 @@
+message Part
+{
+	required int32 id = 1;
+	required string partName = 2;
+	required string hangName = 3;
+	required string modelName = 4;
+	required string imageName = 5;
+	required int32 deviceId = 6;
+	required bool recovery = 7;
+	required int32 belongPartId = 8;
+	required string pn = 9;
+	required int32 focusIndex = 10;
+	optional bool active = 11;
+}
