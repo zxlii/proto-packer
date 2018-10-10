@@ -199,7 +199,7 @@ public class Settings {
         }
 
         //检查目标文件路径
-        CheckDir(outPath, true, true);
+        CheckDir(outPath, true, false);
 
         //检查本地文件路径，用于存放生成过程中的desc和proto文件
         CheckDir(getProtoPath(), true, false);
