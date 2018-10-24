@@ -13,6 +13,11 @@ protobuf文件夹，目前使用的protobuf版本，一个用于生成数据prot
 
 unity-sample文件夹，unity3d示例项目，演示数据在u3d中的用法。
 
+## TODOs
+
+空行，空格检测
+添加特殊列，导出时忽略，例如：desc说明字段
+
 ## 博客链接
 
 https://www.cnblogs.com/fly-100/p/8707749.html
