@@ -115,7 +115,9 @@ public class Settings {
     }
 
     public String getOutputCodePath() {
-        return this.outPath + File.separator + "code";
+        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
+        return temp;
+//        return this.outPath + File.separator + "code";
     }
 
     public String getOutPath() {
@@ -128,7 +130,10 @@ public class Settings {
     }
 
     public String getByteFileFullName() {
-        return this.outPath + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
+        return temp + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+
+//        return this.outPath + File.separator + CONSTANCE_FILE_NAME + ".bytes";
     }
 
     public String getDescPath() {

@@ -74,6 +74,7 @@ public class Pipeline {
                 System.out.println(fileName);
                 sheet = new XSSFWorkbook(input).getSheetAt(0);
             } else {
+                System.out.println(fileName);
                 sheet = new HSSFWorkbook(input).getSheetAt(0);
             }
             map.put(fileName, sheet);
@@ -97,14 +98,14 @@ public class Pipeline {
             sb.append("package ").append(genPackageName).append(";\n");
         }
         for (String key : map.keySet()) {
-            sb.append("import \"").append("Data"+key).append(".proto\";\n");
+            sb.append("import \"").append("Data" + key).append(".proto\";\n");
         }
         sb.append("message ").append(Settings.CONSTANCE_FILE_NAME).append("\n");
         sb.append("{\n");
         int index = 1;
         for (String key : map.keySet()) {
             String fieldName = getMasterFieldName(key);
-            sb.append("\t").append("repeated ").append("Data"+key).append(" ").append(fieldName).append(" = ").append(index++)
+            sb.append("\t").append("repeated ").append("Data" + key).append(" ").append(fieldName).append(" = ").append(index++)
                     .append(";\n");
         }
         sb.append("}");
@@ -188,6 +189,7 @@ public class Pipeline {
         for (File file : descMap.keySet()) {
 
             String fileName = file.getName().replace("Data", "").split("\\.")[0];
+            System.out.println("log=======================" + fileName);
             Sheet sheet = map.get(fileName);
             if (sheet == null) {
                 System.out.println(fileName);
@@ -275,20 +277,17 @@ public class Pipeline {
                     break;
                 }
             }
-            if (valueInString == null) {
-                System.out.println(String.format("The field name '%s' can't be found in '%s'.", fieldName, desc.getFullName()));
+            if (valueInString == null || valueInString.isEmpty()) {
+                System.out.println(String.format("The field name '%s' can't be found in '%s',id is '%s'.", fieldName, desc.getFullName(), content.getRowNum() + 1));
             }
             Descriptors.FieldDescriptor fdesc = desc.findFieldByName(fieldName);
-//            try
-//            {
-            Object obj = getObject(valueInString, fdesc.getJavaType());
-            builder.setField(fdesc, obj);
-//            }
-//            catch(Exception e)
-//            {
-//                System.out.println(fieldName);
-//                System.out.println(valueInString);
-//            }
+            try {
+                Object obj = getObject(valueInString, fdesc.getJavaType());
+                builder.setField(fdesc, obj);
+            } catch (Exception e) {
+                System.out.println(fieldName);
+                System.out.println(valueInString);
+            }
 
         }
         return builder.build();
