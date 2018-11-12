@@ -131,11 +131,13 @@ public class Pipeline {
             sb.append("{\n");
 
             for (int i = 0; i < types.getPhysicalNumberOfCells(); i++) {
-                sb.append(String.format(ProtoPropTemp,
-                        instructions.getCell(i).getStringCellValue(),
-                        types.getCell(i).getStringCellValue(),
-                        names.getCell(i).getStringCellValue(),
-                        i + 1));
+                String type = types.getCell(i).getStringCellValue();
+                String name = names.getCell(i).getStringCellValue();
+                String ins = instructions.getCell(i).getStringCellValue();
+                if (name == null || name.isEmpty() || type == null || type.isEmpty()) {
+                    continue;
+                }
+                sb.append(String.format(ProtoPropTemp, ins, type, name, i + 1));
             }
             sb.append("}");
 
@@ -144,6 +146,10 @@ public class Pipeline {
             out.close();
         }
 
+        createDesc(protoPath);
+    }
+
+    private void createDesc(String protoPath) throws Exception {
         //生成用来动态编译的proto desc文件
         String cmdTemp = "%s -I=%s --descriptor_set_out=%s %s";
         String protocPath = setting.getProtoEnvPath();
@@ -154,6 +160,7 @@ public class Pipeline {
             String protoFullPath = file.getAbsolutePath();
             String protoName = file.getName();
             String desc = descPath + File.separator + protoName.replace(".proto", ".desc");
+//            System.out.println("desc::" + desc);
             String cmd = String.format(cmdTemp, protocPath, protoPath, desc, protoFullPath);
             Runtime.getRuntime().exec(cmd);
         }
@@ -163,7 +170,6 @@ public class Pipeline {
         String desc = setting.getDescPath() + File.separator + protoName.replace(".proto", ".desc");
         String cmd = String.format(cmdTemp, protocPath, protoPath, desc, protoFullPath);
         Runtime.getRuntime().exec(cmd);
-
     }
 
     /**
@@ -211,6 +217,8 @@ public class Pipeline {
                 DynamicMessage msg = buildItem(descriptor, dynamicBuilder, names, sheet.getRow(row));
                 if (msg != null) {
                     builder.addRepeatedField(mfield, msg);
+                } else {
+                    System.out.println("null message :: index=" + row);
                 }
             }
         }
@@ -287,6 +295,54 @@ public class Pipeline {
             } catch (Exception e) {
                 System.out.println(fieldName);
                 System.out.println(valueInString);
+            }
+
+        }
+        return builder.build();
+    }
+
+    private DynamicMessage buildItem(Descriptors.Descriptor desc, DynamicMessage.Builder builder, Row temp, Sheet sheet, int row) {
+
+        builder.clear();
+        Row content = sheet.getRow(row);
+        List<Descriptors.FieldDescriptor> fields = desc.getFields();
+
+        for (Descriptors.FieldDescriptor fieldDesc : fields) {
+
+            String fieldName = fieldDesc.getName();
+            String propValue = null;
+            String propName = null;
+            for (int j = 0; j < temp.getPhysicalNumberOfCells(); j++) {
+
+                Cell tcell = temp.getCell(j);
+                if (tcell.getCellTypeEnum() != CellType.STRING) {
+                    tcell.setCellType(CellType.STRING);
+                }
+
+                Cell ccell = content.getCell(j);
+                if (ccell.getCellTypeEnum() != CellType.STRING) {
+                    ccell.setCellType(CellType.STRING);
+                }
+
+                propName = tcell.getStringCellValue();
+                if (fieldName.equals(propName)) {
+                    propValue = ccell.getStringCellValue();
+                    break;
+                }
+            }
+            
+            if (propValue == null || propValue.isEmpty()) {
+                System.out.println(String.format("The field name '%s' can't be found in '%s',id is '%s'.", fieldName, desc.getFullName(), content.getRowNum() + 1));
+                continue;
+            }
+
+            Descriptors.FieldDescriptor fdesc = desc.findFieldByName(fieldName);
+            try {
+                Object obj = getObject(propValue, fdesc.getJavaType());
+                builder.setField(fdesc, obj);
+            } catch (Exception e) {
+                System.out.println(fieldName);
+                System.out.println(propValue);
             }
 
         }
