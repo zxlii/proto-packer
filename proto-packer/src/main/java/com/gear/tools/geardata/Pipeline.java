@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -42,7 +43,7 @@ public class Pipeline {
 
     public void start() {
         try {
-            
+
             readexcel();
             excel2proto2desc();
 
@@ -86,13 +87,18 @@ public class Pipeline {
             String absolutePath = f.getAbsolutePath();
             boolean isE2007 = absolutePath.endsWith("xlsx");
 
+            if (!f.canRead()) {
+                JOptionPane.showMessageDialog(null, "文件是否正在被使用？" + absolutePath);
+                System.exit(0);
+                break;
+            }
+
             FileInputStream input = new FileInputStream(absolutePath);
+
             Sheet sheet;
             if (isE2007) {
-//                System.out.println(fileName);
                 sheet = new XSSFWorkbook(input).getSheetAt(0);
             } else {
-//                System.out.println(fileName);
                 sheet = new HSSFWorkbook(input).getSheetAt(0);
             }
             map.put(fileName, sheet);
@@ -164,10 +170,6 @@ public class Pipeline {
             out.close();
         }
 
-        createDesc(protoPath);
-    }
-
-    private void createDesc(String protoPath) throws Exception {
         //生成用来动态编译的proto desc文件
         String cmdTemp = "%s -I=%s --descriptor_set_out=%s %s";
         String protocPath = setting.getProtoEnvPath();
@@ -178,7 +180,6 @@ public class Pipeline {
             String protoFullPath = file.getAbsolutePath();
             String protoName = file.getName();
             String desc = descPath + File.separator + protoName.replace(".proto", ".desc");
-//            System.out.println("desc::" + desc);
             String cmd = String.format(cmdTemp, protocPath, protoPath, desc, protoFullPath);
             Runtime.getRuntime().exec(cmd);
         }
@@ -198,7 +199,6 @@ public class Pipeline {
     private void exceldesc2bytes() throws Exception {
 
         HashMap<File, Descriptors.FileDescriptor> descMap = new HashMap<>();
-//        System.out.println(setting.getDescPath());
         File rootFile = new File(setting.getDescPath());
         File[] files = rootFile.listFiles(new FileFilterDesc());
         for (File curFile : files) {
@@ -213,7 +213,6 @@ public class Pipeline {
         for (File file : descMap.keySet()) {
 
             String fileName = file.getName().replace("Data", "").split("\\.")[0];
-            System.out.println("log=======================" + fileName);
             Sheet sheet = map.get(fileName);
             if (sheet == null) {
                 System.out.println(fileName);
@@ -244,8 +243,13 @@ public class Pipeline {
         DynamicMessage constance = builder.build();
         FileOutputStream out = new FileOutputStream(setting.getByteFileFullName());
         out.write(constance.toByteArray());
-        builder.clear();
         out.close();
+
+        out = new FileOutputStream(setting.getCurrentPlatformGenBytePath());
+        out.write(constance.toByteArray());
+        out.close();
+
+        builder.clear();
     }
 
     /**
@@ -259,6 +263,30 @@ public class Pipeline {
         String param1 = "-I=" + setting.getProtoPath();
         //生成后的代码存放目录
         String param2 = "--" + setting.getTargetPlatform() + "=" + setting.getOutputCodePath();
+        //需要生成的proto文件目录
+        String param3 = "";
+        String path = setting.getProtoPath();
+        File rootFile = new File(path);
+        File[] files = rootFile.listFiles(new FileFilterProto());
+        for (int i = 0; i < files.length; i++) {
+            param3 += files[i].getAbsolutePath();
+            if (i < files.length - 1) {
+                param3 += " ";
+            }
+        }
+        String cmdTemp = "%s %s %s %s";
+        String cmd = String.format(cmdTemp, protocPath, param1, param2, param3);
+        Runtime.getRuntime().exec(cmd);
+
+        copycode();
+    }
+
+    private void copycode() throws Exception {
+        String protocPath = setting.getProtoEnvPath();
+        //proto源文件的存放目录
+        String param1 = "-I=" + setting.getProtoPath();
+        //生成后的代码存放目录
+        String param2 = "--" + setting.getTargetPlatform() + "=" + setting.getCurrentPlatformGenCodePath();
         //需要生成的proto文件目录
         String param3 = "";
         String path = setting.getProtoPath();

@@ -47,6 +47,27 @@ public class Settings {
         Read();
     }
 
+    public String getCurrentPlatformGenCodePath() {
+
+        String result = "\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
+        if (OSInfo.isMacOS() || OSInfo.isMacOSX()) {
+            result = "~\\Others\\gitlab" + result;
+        } else if (OSInfo.isWindows()) {
+            result = "E:\\gitlab" + result;
+        }
+        return result;
+    }
+
+    public String getCurrentPlatformGenBytePath() {
+        String result = "\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
+        if (OSInfo.isMacOS() || OSInfo.isMacOSX()) {
+            result = "~\\Others\\gitlab" + result;
+        } else if (OSInfo.isWindows()) {
+            result = "E:\\gitlab" + result;
+        }
+        return result + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+    }
+
     private void Read() {
         prop = new Properties();
         try {
@@ -115,9 +136,9 @@ public class Settings {
     }
 
     public String getOutputCodePath() {
-        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
-        return temp;
-//        return this.outPath + File.separator + "code";
+//        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
+//        return temp;
+        return this.outPath + File.separator + "code";
     }
 
     public String getOutPath() {
@@ -134,10 +155,9 @@ public class Settings {
     }
 
     public String getByteFileFullName() {
-        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
-        return temp + File.separator + CONSTANCE_FILE_NAME + ".bytes";
-
-//        return this.outPath + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+//        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
+//        return temp + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+        return this.outPath + File.separator + CONSTANCE_FILE_NAME + ".bytes";
     }
 
     public String getDescPath() {
