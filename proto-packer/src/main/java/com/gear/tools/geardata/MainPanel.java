@@ -273,13 +273,14 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_rdoLuaActionPerformed
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
+
         setting.Save(this);
         if (!setting.CheckAllPath()) {
             return;
         }
+
         new Pipeline(setting).start();
-        JOptionPane.showMessageDialog(this, "完成!");
-        Runtime.getRuntime().exit(0);
+        this.btnGenerate.setEnabled(false);
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void btnEnvironmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvironmentActionPerformed
@@ -346,6 +347,14 @@ public class MainPanel extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Settings setting;
+    private static MainPanel sInstance;
+
+    public static MainPanel GetInstance() {
+        if (sInstance == null) {
+            sInstance = new MainPanel();
+        }
+        return sInstance;
+    }
 
     private void initComponentsValue() {
         if (setting == null) {
@@ -392,8 +401,13 @@ public class MainPanel extends javax.swing.JFrame {
     public String getInputPath() {
         return this.tfInPath.getText();
     }
-    
-    public String getOutPath(){
+
+    public String getOutPath() {
         return this.tfOutPath.getText();
+    }
+
+    public void onComplete() {
+        JOptionPane.showMessageDialog(null, "完成!");
+        Runtime.getRuntime().exit(0);
     }
 }

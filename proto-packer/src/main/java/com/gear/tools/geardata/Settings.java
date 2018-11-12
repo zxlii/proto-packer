@@ -129,6 +129,10 @@ public class Settings {
         return envPath;
     }
 
+    public String getLocalPath() {
+        return localPath;
+    }
+
     public String getByteFileFullName() {
         String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
         return temp + File.separator + CONSTANCE_FILE_NAME + ".bytes";

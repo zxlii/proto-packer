@@ -16,6 +16,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -40,10 +42,26 @@ public class Pipeline {
 
     public void start() {
         try {
+            
             readexcel();
             excel2proto2desc();
-            exceldesc2bytes();
-            proto2code();
+
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        exceldesc2bytes();
+                        proto2code();
+                        cancel();
+                        MainPanel.GetInstance().onComplete();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task, 1000);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,10 +89,10 @@ public class Pipeline {
             FileInputStream input = new FileInputStream(absolutePath);
             Sheet sheet;
             if (isE2007) {
-                System.out.println(fileName);
+//                System.out.println(fileName);
                 sheet = new XSSFWorkbook(input).getSheetAt(0);
             } else {
-                System.out.println(fileName);
+//                System.out.println(fileName);
                 sheet = new HSSFWorkbook(input).getSheetAt(0);
             }
             map.put(fileName, sheet);
@@ -330,7 +348,7 @@ public class Pipeline {
                     break;
                 }
             }
-            
+
             if (propValue == null || propValue.isEmpty()) {
                 System.out.println(String.format("The field name '%s' can't be found in '%s',id is '%s'.", fieldName, desc.getFullName(), content.getRowNum() + 1));
                 continue;
