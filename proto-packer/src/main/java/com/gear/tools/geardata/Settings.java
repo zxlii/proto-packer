@@ -31,7 +31,7 @@ public class Settings {
     private String envPath;
 
     //包名
-    private String classPath;
+    private String classPath = "WS.Data";
 
     //输入路径，也就是excel存放路径
     private String inPath;
@@ -45,27 +45,6 @@ public class Settings {
     public Settings() {
         localPath = System.getProperty("user.dir");
         Read();
-    }
-
-    public String getCurrentPlatformGenCodePath() {
-
-        String result = "\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
-        if (OSInfo.isMacOS() || OSInfo.isMacOSX()) {
-            result = "~\\Others\\gitlab" + result;
-        } else if (OSInfo.isWindows()) {
-            result = "E:\\gitlab" + result;
-        }
-        return result;
-    }
-
-    public String getCurrentPlatformGenBytePath() {
-        String result = "\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
-        if (OSInfo.isMacOS() || OSInfo.isMacOSX()) {
-            result = "~\\Others\\gitlab" + result;
-        } else if (OSInfo.isWindows()) {
-            result = "E:\\gitlab" + result;
-        }
-        return result + File.separator + CONSTANCE_FILE_NAME + ".bytes";
     }
 
     private void Read() {
@@ -132,17 +111,16 @@ public class Settings {
     }
 
     public String getInputPath() {
-        return inPath;
+        return localPath;
     }
 
     public String getOutputCodePath() {
-//        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Scripts\\Data\\Gen";
-//        return temp;
-        return this.outPath + File.separator + "code";
+        return this.localPath + File.separator + "gen";
     }
 
     public String getOutPath() {
-        return this.outPath;
+//        return this.outPath;
+        return this.localPath + File.separator + "gen";
     }
 
     //protoc.exe所在目录
@@ -155,13 +133,11 @@ public class Settings {
     }
 
     public String getByteFileFullName() {
-//        String temp = "E:\\gitlab\\wordslices\\projects\\wordslices-runtime\\Assets\\Resources";
-//        return temp + File.separator + CONSTANCE_FILE_NAME + ".bytes";
-        return this.outPath + File.separator + CONSTANCE_FILE_NAME + ".bytes";
+        return this.localPath + File.separator + "gen\\" + CONSTANCE_FILE_NAME + ".bytes";
     }
 
     public String getDescPath() {
-        return outPath + File.separator + "desc";
+        return localPath + File.separator + "tools\\desc";
     }
 
     public String getDescConstancePath() {
@@ -170,7 +146,7 @@ public class Settings {
 
     //proto源文件的存放目录
     public String getProtoPath() {
-        return outPath + File.separator + "proto";
+        return localPath + File.separator + "tools\\proto";
     }
 
     public String getProtoConstancePath() {
@@ -218,7 +194,7 @@ public class Settings {
     }
 
     public String getEnvironmentPath() {
-        return this.envPath;
+        return this.localPath + File.separator + "tools\\protoc-3.4.0-win32\\bin\\protoc.exe";
     }
 
     public boolean CheckAllPath() {

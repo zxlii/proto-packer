@@ -245,10 +245,6 @@ public class Pipeline {
         out.write(constance.toByteArray());
         out.close();
 
-        out = new FileOutputStream(setting.getCurrentPlatformGenBytePath());
-        out.write(constance.toByteArray());
-        out.close();
-
         builder.clear();
     }
 
@@ -263,30 +259,6 @@ public class Pipeline {
         String param1 = "-I=" + setting.getProtoPath();
         //生成后的代码存放目录
         String param2 = "--" + setting.getTargetPlatform() + "=" + setting.getOutputCodePath();
-        //需要生成的proto文件目录
-        String param3 = "";
-        String path = setting.getProtoPath();
-        File rootFile = new File(path);
-        File[] files = rootFile.listFiles(new FileFilterProto());
-        for (int i = 0; i < files.length; i++) {
-            param3 += files[i].getAbsolutePath();
-            if (i < files.length - 1) {
-                param3 += " ";
-            }
-        }
-        String cmdTemp = "%s %s %s %s";
-        String cmd = String.format(cmdTemp, protocPath, param1, param2, param3);
-        Runtime.getRuntime().exec(cmd);
-
-        copycode();
-    }
-
-    private void copycode() throws Exception {
-        String protocPath = setting.getProtoEnvPath();
-        //proto源文件的存放目录
-        String param1 = "-I=" + setting.getProtoPath();
-        //生成后的代码存放目录
-        String param2 = "--" + setting.getTargetPlatform() + "=" + setting.getCurrentPlatformGenCodePath();
         //需要生成的proto文件目录
         String param3 = "";
         String path = setting.getProtoPath();

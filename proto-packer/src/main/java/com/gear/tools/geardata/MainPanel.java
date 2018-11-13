@@ -45,9 +45,6 @@ public class MainPanel extends javax.swing.JFrame {
         rdoCsharp = new javax.swing.JRadioButton();
         rdoLua = new javax.swing.JRadioButton();
         rdoRemember = new javax.swing.JRadioButton();
-        btnOutCodePath = new javax.swing.JButton();
-        btnEnvironment = new javax.swing.JButton();
-        btnInPath = new javax.swing.JButton();
         btnGenerate = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         tfClassPath = new javax.swing.JTextField();
@@ -70,10 +67,16 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("环境变量");
 
+        tfInPath.setEditable(false);
+        tfInPath.setEnabled(false);
         tfInPath.setName("inputPath"); // NOI18N
 
+        tfEnvironment.setEditable(false);
+        tfEnvironment.setEnabled(false);
         tfEnvironment.setName("envPath"); // NOI18N
 
+        tfOutPath.setEditable(false);
+        tfOutPath.setEnabled(false);
         tfOutPath.setName("outPath"); // NOI18N
 
         buttonGroup1.add(rdoJava);
@@ -110,27 +113,6 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
-        btnOutCodePath.setText("...");
-        btnOutCodePath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOutCodePathActionPerformed(evt);
-            }
-        });
-
-        btnEnvironment.setText("...");
-        btnEnvironment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnvironmentActionPerformed(evt);
-            }
-        });
-
-        btnInPath.setText("...");
-        btnInPath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInPathActionPerformed(evt);
-            }
-        });
-
         btnGenerate.setText("开始生成");
         btnGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +123,8 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("类路径");
 
+        tfClassPath.setEditable(false);
+        tfClassPath.setEnabled(false);
         tfClassPath.setName("inputPath"); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -171,36 +155,27 @@ public class MainPanel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfClassPath, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfInPath, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnInPath, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfOutPath, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnOutCodePath, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfInPath, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfOutPath, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(rdoJava)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(rdoCsharp)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(rdoLua)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(112, 112, 112)
                                     .addComponent(rdoRemember))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(tfEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfEnvironment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,10 +186,9 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(rdoLua)
                     .addComponent(jLabel1)
                     .addComponent(rdoRemember))
-                .addGap(7, 7, 7)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnvironment, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -223,12 +197,10 @@ public class MainPanel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfInPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInPath, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfOutPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOutCodePath, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,14 +214,6 @@ public class MainPanel extends javax.swing.JFrame {
         javax.swing.JRadioButton btn = (javax.swing.JRadioButton) evt.getSource();
         setting.setAutoRemember(btn.isSelected());
     }//GEN-LAST:event_rdoRememberActionPerformed
-
-    private void btnInPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPathActionPerformed
-        selectPathForTextField(tfInPath);
-    }//GEN-LAST:event_btnInPathActionPerformed
-
-    private void btnOutCodePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutCodePathActionPerformed
-        selectPathForTextField(tfOutPath);
-    }//GEN-LAST:event_btnOutCodePathActionPerformed
 
     private void rdoJavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoJavaActionPerformed
         javax.swing.JRadioButton btn = (javax.swing.JRadioButton) evt.getSource();
@@ -282,10 +246,6 @@ public class MainPanel extends javax.swing.JFrame {
         new Pipeline(setting).start();
         this.btnGenerate.setEnabled(false);
     }//GEN-LAST:event_btnGenerateActionPerformed
-
-    private void btnEnvironmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvironmentActionPerformed
-        selectPathForTextField(tfEnvironment);
-    }//GEN-LAST:event_btnEnvironmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,10 +284,7 @@ public class MainPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnvironment;
     private javax.swing.JButton btnGenerate;
-    private javax.swing.JButton btnInPath;
-    private javax.swing.JButton btnOutCodePath;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
