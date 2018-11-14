@@ -1,0 +1,19 @@
+syntax = "proto3";
+package WS.Data;
+message DataSignIn
+{
+	//唯一表示
+	int32 id = 1;
+	//第几天
+	int32 day = 2;
+	//金币
+	int32 coins = 3;
+	//单选限时道具
+	int32 single = 4;
+	//合并限时道具
+	int32 merge = 5;
+	//提示限时道具
+	int32 hint = 6;
+	//广告获得金币数
+	int32 adcoins = 7;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package WS.Data;
+message DataLuckyBagRandomPro
+{
+	//ID
+	int32 id = 1;
+	//单字提示
+	int32 wordPrompt = 2;
+	//普通提示
+	int32 ordinaryPrompt = 3;
+	//合并提示
+	int32 mergePrompt = 4;
+	//权重
+	int32 weight = 5;
+}

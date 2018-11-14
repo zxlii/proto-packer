@@ -1,0 +1,13 @@
+syntax = "proto3";
+package WS.Data;
+message DataStyle
+{
+	//唯一标识
+	int32 id = 1;
+	//背景图名称
+	string bg_name = 2;
+	//颜色
+	string color = 3;
+	//连接线颜色
+	string blockLinkColor = 4;
+}

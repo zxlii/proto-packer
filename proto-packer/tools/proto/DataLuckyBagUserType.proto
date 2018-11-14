@@ -1,0 +1,21 @@
+syntax = "proto3";
+package WS.Data;
+message DataLuckyBagUserType
+{
+	//ID
+	int32 id = 1;
+	//消费下限
+	float CostlowerLimit = 2;
+	//消费上限
+	float CostUpperLimit = 3;
+	//用户库存金币(<)
+	int32 UserCoin = 4;
+	//上一关接错次数(>)
+	int32 LastLevelWorngNum = 5;
+	//距离上次关卡付费间隔（-1不参考 >）
+	int32 LastPaidLevelInterval = 6;
+	//过关次数（-1不参考 >）
+	int32 PassTimes = 7;
+	//距离上一次展示间隔天数（>=）
+	int32 LastShowInterval = 8;
+}

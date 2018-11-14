@@ -10,6 +10,9 @@ import com.gear.tools.geardata.FileFilters.FileFilterExcel;
 import com.gear.tools.geardata.FileFilters.FileFilterProto;
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
+import static com.google.protobuf.Descriptors.FieldDescriptor.JavaType.INT;
 import com.google.protobuf.DynamicMessage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -112,6 +115,7 @@ public class Pipeline {
      * @author lizhixiong
      */
     private void excel2proto2desc() throws Exception {
+
         String protoPath = setting.getProtoPath();
         String genPackageName = setting.getPackageName();
 
@@ -140,8 +144,10 @@ public class Pipeline {
         out.close();
 
         for (String key : map.keySet()) {
+
             Sheet sheet = map.get(key);
             String fileName = "Data" + key;
+
             Row types = sheet.getRow(0);
             Row names = sheet.getRow(1);
             Row instructions = sheet.getRow(2);
@@ -155,13 +161,16 @@ public class Pipeline {
             sb.append("{\n");
 
             for (int i = 0; i < types.getPhysicalNumberOfCells(); i++) {
-                String type = types.getCell(i).getStringCellValue();
-                String name = names.getCell(i).getStringCellValue();
-                String ins = instructions.getCell(i).getStringCellValue();
-                if (name == null || name.isEmpty() || type == null || type.isEmpty()) {
-                    continue;
+                Cell typeCell = types.getCell(i);
+                Cell nameCell = names.getCell(i);
+                if (typeCell != null && nameCell != null) {
+                    String type = typeCell.getStringCellValue();
+                    String name = nameCell.getStringCellValue();
+                    String ins = instructions.getCell(i).getStringCellValue();
+                    if (name != null && !name.isEmpty() && type != null && !type.isEmpty()) {
+                        sb.append(String.format(ProtoPropTemp, ins, type, name, i + 1));
+                    }
                 }
-                sb.append(String.format(ProtoPropTemp, ins, type, name, i + 1));
             }
             sb.append("}");
 
@@ -217,7 +226,9 @@ public class Pipeline {
             if (sheet == null) {
                 System.out.println(fileName);
             }
+            Row types = sheet.getRow(0);
             Row names = sheet.getRow(1);
+
             int maxRow = sheet.getPhysicalNumberOfRows();
 
 //          reference : https://blog.csdn.net/lufeng20/article/details/8736584
@@ -231,7 +242,7 @@ public class Pipeline {
             }
 
             for (int row = 3; row < maxRow; row++) {
-                DynamicMessage msg = buildItem(descriptor, dynamicBuilder, names, sheet.getRow(row));
+                DynamicMessage msg = buildItem(descriptor, dynamicBuilder, types, names, sheet.getRow(row));
                 if (msg != null) {
                     builder.addRepeatedField(mfield, msg);
                 } else {
@@ -280,36 +291,45 @@ public class Pipeline {
      *
      * @author lizhixiong
      */
-    private DynamicMessage buildItem(Descriptors.Descriptor desc, DynamicMessage.Builder builder, Row temp, Row content) {
+    private DynamicMessage buildItem(Descriptors.Descriptor desc, DynamicMessage.Builder builder, Row types, Row names, Row content) {
 
         builder.clear();
-        List<Descriptors.FieldDescriptor> fields = desc.getFields();
-        for (Descriptors.FieldDescriptor fieldDesc : fields) {
+        List<FieldDescriptor> fields = desc.getFields();
+        for (FieldDescriptor fieldDesc : fields) {
 
             String fieldName = fieldDesc.getName();
-            String valueInString = null;
-            for (int j = 0; j < temp.getPhysicalNumberOfCells(); j++) {
-                Cell tcell = temp.getCell(j);
-                Cell ccell = content.getCell(j);
-                if (tcell.getCellTypeEnum() != CellType.STRING) {
-                    tcell.setCellType(CellType.STRING);
-                }
-                if (ccell.getCellTypeEnum() != CellType.STRING) {
-                    ccell.setCellType(CellType.STRING);
-                }
-                String varName = tcell.getStringCellValue();
-                if (fieldName.equals(varName)) {
-                    valueInString = ccell.getStringCellValue();
-                    break;
+            String valueInString = "";
+
+            for (int j = 0; j < types.getPhysicalNumberOfCells(); j++) {
+
+                Cell typeCell = types.getCell(j);
+                Cell nameCell = names.getCell(j);
+
+                if (typeCell != null && nameCell != null) {
+
+                    String type = typeCell.getStringCellValue();
+                    String name = nameCell.getStringCellValue();
+
+                    if (type != null && !type.isEmpty() && name != null && !name.isEmpty()) {
+                        Cell contentCell = content.getCell(j);
+                        if (contentCell != null) {
+                            if (contentCell.getCellTypeEnum() != CellType.STRING) {
+                                contentCell.setCellType(CellType.STRING);
+                            }
+                            valueInString = contentCell.getStringCellValue();
+                        } else {
+                            valueInString = "";
+                        }
+                        if (fieldName.equals(name)) {
+                            break;
+                        }
+                    }
                 }
             }
-            if (valueInString == null || valueInString.isEmpty()) {
-                System.out.println(String.format("The field name '%s' can't be found in '%s',id is '%s'.", fieldName, desc.getFullName(), content.getRowNum() + 1));
-            }
-            Descriptors.FieldDescriptor fdesc = desc.findFieldByName(fieldName);
+
             try {
-                Object obj = getObject(valueInString, fdesc.getJavaType());
-                builder.setField(fdesc, obj);
+                Object obj = getObject(valueInString, fieldDesc.getJavaType());
+                builder.setField(fieldDesc, obj);
             } catch (Exception e) {
                 System.out.println(fieldName);
                 System.out.println(valueInString);
@@ -323,9 +343,9 @@ public class Pipeline {
 
         builder.clear();
         Row content = sheet.getRow(row);
-        List<Descriptors.FieldDescriptor> fields = desc.getFields();
+        List<FieldDescriptor> fields = desc.getFields();
 
-        for (Descriptors.FieldDescriptor fieldDesc : fields) {
+        for (FieldDescriptor fieldDesc : fields) {
 
             String fieldName = fieldDesc.getName();
             String propValue = null;
@@ -367,14 +387,18 @@ public class Pipeline {
         return builder.build();
     }
 
-    private static Object getObject(String rawString, Descriptors.FieldDescriptor.JavaType type) {
+    private static Object getObject(String rawString, JavaType type) {
         try {
             switch (type) {
+
                 case INT:
                     return Integer.valueOf(rawString);
                 case LONG:
                     return Long.valueOf(rawString);
                 case FLOAT:
+                    if (!rawString.endsWith("f")) {
+                        rawString += "f";
+                    }
                     return Float.valueOf(rawString);
                 case DOUBLE:
                     return Double.valueOf(rawString);

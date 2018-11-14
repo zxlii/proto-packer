@@ -1,0 +1,11 @@
+syntax = "proto3";
+package WS.Data;
+message DataLuckyBagRandomCoin
+{
+	//ID
+	int32 id = 1;
+	//奖励金币
+	int32 coinNum = 2;
+	//权重
+	int32 weight = 3;
+}
