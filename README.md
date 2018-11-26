@@ -19,6 +19,8 @@ unity-sample文件夹，unity3d示例项目，演示数据在u3d中的用法。
 
 2.添加特殊列，导出时忽略，例如：desc说明字段
 
+3.添加生成错误提示
+
 ## 博客链接
 
 https://www.cnblogs.com/fly-100/p/8707749.html
