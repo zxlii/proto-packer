@@ -17,8 +17,10 @@ import com.google.protobuf.DynamicMessage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.JOptionPane;
@@ -39,6 +41,8 @@ public class Pipeline {
     final private HashMap<String, Sheet> map;
     final private Settings setting;
 
+    final private StringBuilder log = new StringBuilder();
+
     public Pipeline(Settings setting) {
         this.setting = setting;
         map = new HashMap();
@@ -57,9 +61,13 @@ public class Pipeline {
                         exceldesc2bytes();
                         proto2code();
                         cancel();
-                        MainPanel.GetInstance().onComplete();
+                        JOptionPane.showMessageDialog(MainPanel.GetInstance(), "完成!");
+                        Runtime.getRuntime().exit(0);
                     } catch (Exception e) {
                         e.printStackTrace();
+                        JOptionPane.showMessageDialog(MainPanel.GetInstance(), log, "信息！", 0);
+                        JOptionPane.showMessageDialog(MainPanel.GetInstance(), e.getStackTrace(), "失败！", 0);
+                        Runtime.getRuntime().exit(0);
                     }
                 }
             };
@@ -69,6 +77,10 @@ public class Pipeline {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void addMessage(String msg) {
+        log.append(msg).append("\n");
     }
 
     public void destroy() {
@@ -107,6 +119,7 @@ public class Pipeline {
             map.put(fileName, sheet);
             input.close();
         }
+        addMessage("读取excel完成！");
     }
 
     /**
@@ -164,8 +177,8 @@ public class Pipeline {
                 Cell typeCell = types.getCell(i);
                 Cell nameCell = names.getCell(i);
                 if (typeCell != null && nameCell != null) {
-                    String type = typeCell.getStringCellValue();
-                    String name = nameCell.getStringCellValue();
+                    String type = typeCell.getStringCellValue().trim();
+                    String name = nameCell.getStringCellValue().trim();
                     String ins = instructions.getCell(i).getStringCellValue();
                     if (name != null && !name.isEmpty() && type != null && !type.isEmpty()) {
                         sb.append(String.format(ProtoPropTemp, ins, type, name, i + 1));
@@ -198,6 +211,8 @@ public class Pipeline {
         String desc = setting.getDescPath() + File.separator + protoName.replace(".proto", ".desc");
         String cmd = String.format(cmdTemp, protocPath, protoPath, desc, protoFullPath);
         Runtime.getRuntime().exec(cmd);
+
+        addMessage("生成proto、desc完成！");
     }
 
     /**
@@ -220,8 +235,9 @@ public class Pipeline {
         DynamicMessage.Builder builder = DynamicMessage.newBuilder(rootDesc);
 
         for (File file : descMap.keySet()) {
-
-            String fileName = file.getName().replace("Data", "").split("\\.")[0];
+            String fileName = file.getName();
+            fileName = fileName.split("\\.")[0];
+            fileName = fileName.substring(4);
             Sheet sheet = map.get(fileName);
             if (sheet == null) {
                 System.out.println(fileName);
@@ -240,11 +256,23 @@ public class Pipeline {
                 System.out.println("The constance field '" + mfieldName + "' can't be found.");
                 break;
             }
-
+            List<Integer> list = new ArrayList<Integer>();
             for (int row = 3; row < maxRow; row++) {
                 DynamicMessage msg = buildItem(descriptor, dynamicBuilder, types, names, sheet.getRow(row));
                 if (msg != null) {
-                    builder.addRepeatedField(mfield, msg);
+
+                    Map<FieldDescriptor, Object> map = dynamicBuilder.getAllFields();
+                    for (FieldDescriptor fd : map.keySet()) {
+                        if (fd.getName().equals("id")) {
+                            Integer id = (Integer) map.get(fd);
+                            if (list.contains(id)) {
+                                addMessage("重复的Id：" + id.toString());
+                            } else {
+                                builder.addRepeatedField(mfield, msg);
+                            }
+                        }
+                    }
+
                 } else {
                     System.out.println("null message :: index=" + row);
                 }
@@ -257,6 +285,8 @@ public class Pipeline {
         out.close();
 
         builder.clear();
+
+        addMessage("生成bytes完成！");
     }
 
     /**
@@ -284,6 +314,8 @@ public class Pipeline {
         String cmdTemp = "%s %s %s %s";
         String cmd = String.format(cmdTemp, protocPath, param1, param2, param3);
         Runtime.getRuntime().exec(cmd);
+
+        addMessage("生成目标代码完成！");
     }
 
     /**
@@ -307,8 +339,8 @@ public class Pipeline {
 
                 if (typeCell != null && nameCell != null) {
 
-                    String type = typeCell.getStringCellValue();
-                    String name = nameCell.getStringCellValue();
+                    String type = typeCell.getStringCellValue().trim();
+                    String name = nameCell.getStringCellValue().trim();
 
                     if (type != null && !type.isEmpty() && name != null && !name.isEmpty()) {
                         Cell contentCell = content.getCell(j);
@@ -316,7 +348,7 @@ public class Pipeline {
                             if (contentCell.getCellTypeEnum() != CellType.STRING) {
                                 contentCell.setCellType(CellType.STRING);
                             }
-                            valueInString = contentCell.getStringCellValue();
+                            valueInString = contentCell.getStringCellValue().trim();
                         } else {
                             valueInString = "";
                         }

@@ -1,27 +1,27 @@
 
-®	
-Constance.protoWS.DataDataLuckyBagUserType.protoDataGlobal.protoDataLetter.protoDataPayment.protoDataLevelWords.protoDataPiece.protoDataSignIn.protoDataLuckyBagRandomPro.protoDataStyle.protoDataEffect.protoDataLevel.protoDataLuckyBagRandomCoin.protoDataLuckyBagShow.protoDataTool.proto"æ
+¾	
+Constance.protoWS.DataDataLuckyBagUserType.protoDataGlobal.protoDataLuckyBagShowData.protoDataLetter.protoDataPayment.protoDataLevelWords.protoDataPiece.protoDataSignIn.protoDataLuckyBagRandomPro.protoDataStyle.protoDataEffect.protoDataLevel.protoDataLuckyBagRandomCoin.protoDataTool.proto"ò
 	ConstanceQ
 luckyBagUserTypeList (2.WS.Data.DataLuckyBagUserTypeRluckyBagUserTypeList3
 
 globalList (2.WS.Data.DataGlobalR
-globalList3
+globalListQ
+luckyBagShowDataList (2.WS.Data.DataLuckyBagShowDataRluckyBagShowDataList3
 
-letterList (2.WS.Data.DataLetterR
+letterList (2.WS.Data.DataLetterR
 letterList6
-paymentList (2.WS.Data.DataPaymentRpaymentList?
-levelWordsList (2.WS.Data.DataLevelWordsRlevelWordsList0
-	pieceList (2.WS.Data.DataPieceR	pieceList3
+paymentList (2.WS.Data.DataPaymentRpaymentList?
+levelWordsList (2.WS.Data.DataLevelWordsRlevelWordsList0
+	pieceList (2.WS.Data.DataPieceR	pieceList3
 
-signInList (2.WS.Data.DataSignInR
+signInList (2.WS.Data.DataSignInR
 signInListT
-luckyBagRandomProList (2.WS.Data.DataLuckyBagRandomProRluckyBagRandomProList0
-	styleList	 (2.WS.Data.DataStyleR	styleList3
+luckyBagRandomProList	 (2.WS.Data.DataLuckyBagRandomProRluckyBagRandomProList0
+	styleList
+ (2.WS.Data.DataStyleR	styleList3
 
-effectList
- (2.WS.Data.DataEffectR
+effectList (2.WS.Data.DataEffectR
 effectList0
-	levelList (2.WS.Data.DataLevelR	levelListW
-luckyBagRandomCoinList (2.WS.Data.DataLuckyBagRandomCoinRluckyBagRandomCoinListE
-luckyBagShowList (2.WS.Data.DataLuckyBagShowRluckyBagShowList-
+	levelList (2.WS.Data.DataLevelR	levelListW
+luckyBagRandomCoinList (2.WS.Data.DataLuckyBagRandomCoinRluckyBagRandomCoinList-
 toolList (2.WS.Data.DataToolRtoolListbproto3

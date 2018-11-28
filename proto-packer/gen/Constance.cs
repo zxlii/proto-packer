@@ -23,32 +23,32 @@ namespace WS.Data {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9Db25zdGFuY2UucHJvdG8SB1dTLkRhdGEaGkRhdGFMdWNreUJhZ1VzZXJU",
-            "eXBlLnByb3RvGhBEYXRhR2xvYmFsLnByb3RvGhBEYXRhTGV0dGVyLnByb3Rv",
-            "GhFEYXRhUGF5bWVudC5wcm90bxoURGF0YUxldmVsV29yZHMucHJvdG8aD0Rh",
-            "dGFQaWVjZS5wcm90bxoQRGF0YVNpZ25Jbi5wcm90bxobRGF0YUx1Y2t5QmFn",
-            "UmFuZG9tUHJvLnByb3RvGg9EYXRhU3R5bGUucHJvdG8aEERhdGFFZmZlY3Qu",
-            "cHJvdG8aD0RhdGFMZXZlbC5wcm90bxocRGF0YUx1Y2t5QmFnUmFuZG9tQ29p",
-            "bi5wcm90bxoWRGF0YUx1Y2t5QmFnU2hvdy5wcm90bxoORGF0YVRvb2wucHJv",
-            "dG8ilwUKCUNvbnN0YW5jZRI7ChRsdWNreUJhZ1VzZXJUeXBlTGlzdBgBIAMo",
-            "CzIdLldTLkRhdGEuRGF0YUx1Y2t5QmFnVXNlclR5cGUSJwoKZ2xvYmFsTGlz",
-            "dBgCIAMoCzITLldTLkRhdGEuRGF0YUdsb2JhbBInCgpsZXR0ZXJMaXN0GAMg",
-            "AygLMhMuV1MuRGF0YS5EYXRhTGV0dGVyEikKC3BheW1lbnRMaXN0GAQgAygL",
-            "MhQuV1MuRGF0YS5EYXRhUGF5bWVudBIvCg5sZXZlbFdvcmRzTGlzdBgFIAMo",
-            "CzIXLldTLkRhdGEuRGF0YUxldmVsV29yZHMSJQoJcGllY2VMaXN0GAYgAygL",
-            "MhIuV1MuRGF0YS5EYXRhUGllY2USJwoKc2lnbkluTGlzdBgHIAMoCzITLldT",
-            "LkRhdGEuRGF0YVNpZ25JbhI9ChVsdWNreUJhZ1JhbmRvbVByb0xpc3QYCCAD",
-            "KAsyHi5XUy5EYXRhLkRhdGFMdWNreUJhZ1JhbmRvbVBybxIlCglzdHlsZUxp",
-            "c3QYCSADKAsyEi5XUy5EYXRhLkRhdGFTdHlsZRInCgplZmZlY3RMaXN0GAog",
-            "AygLMhMuV1MuRGF0YS5EYXRhRWZmZWN0EiUKCWxldmVsTGlzdBgLIAMoCzIS",
-            "LldTLkRhdGEuRGF0YUxldmVsEj8KFmx1Y2t5QmFnUmFuZG9tQ29pbkxpc3QY",
-            "DCADKAsyHy5XUy5EYXRhLkRhdGFMdWNreUJhZ1JhbmRvbUNvaW4SMwoQbHVj",
-            "a3lCYWdTaG93TGlzdBgNIAMoCzIZLldTLkRhdGEuRGF0YUx1Y2t5QmFnU2hv",
-            "dxIjCgh0b29sTGlzdBgOIAMoCzIRLldTLkRhdGEuRGF0YVRvb2xiBnByb3Rv",
-            "Mw=="));
+            "eXBlLnByb3RvGhBEYXRhR2xvYmFsLnByb3RvGhpEYXRhTHVja3lCYWdTaG93",
+            "RGF0YS5wcm90bxoQRGF0YUxldHRlci5wcm90bxoRRGF0YVBheW1lbnQucHJv",
+            "dG8aFERhdGFMZXZlbFdvcmRzLnByb3RvGg9EYXRhUGllY2UucHJvdG8aEERh",
+            "dGFTaWduSW4ucHJvdG8aG0RhdGFMdWNreUJhZ1JhbmRvbVByby5wcm90bxoP",
+            "RGF0YVN0eWxlLnByb3RvGhBEYXRhRWZmZWN0LnByb3RvGg9EYXRhTGV2ZWwu",
+            "cHJvdG8aHERhdGFMdWNreUJhZ1JhbmRvbUNvaW4ucHJvdG8aDkRhdGFUb29s",
+            "LnByb3RvIp8FCglDb25zdGFuY2USOwoUbHVja3lCYWdVc2VyVHlwZUxpc3QY",
+            "ASADKAsyHS5XUy5EYXRhLkRhdGFMdWNreUJhZ1VzZXJUeXBlEicKCmdsb2Jh",
+            "bExpc3QYAiADKAsyEy5XUy5EYXRhLkRhdGFHbG9iYWwSOwoUbHVja3lCYWdT",
+            "aG93RGF0YUxpc3QYAyADKAsyHS5XUy5EYXRhLkRhdGFMdWNreUJhZ1Nob3dE",
+            "YXRhEicKCmxldHRlckxpc3QYBCADKAsyEy5XUy5EYXRhLkRhdGFMZXR0ZXIS",
+            "KQoLcGF5bWVudExpc3QYBSADKAsyFC5XUy5EYXRhLkRhdGFQYXltZW50Ei8K",
+            "DmxldmVsV29yZHNMaXN0GAYgAygLMhcuV1MuRGF0YS5EYXRhTGV2ZWxXb3Jk",
+            "cxIlCglwaWVjZUxpc3QYByADKAsyEi5XUy5EYXRhLkRhdGFQaWVjZRInCgpz",
+            "aWduSW5MaXN0GAggAygLMhMuV1MuRGF0YS5EYXRhU2lnbkluEj0KFWx1Y2t5",
+            "QmFnUmFuZG9tUHJvTGlzdBgJIAMoCzIeLldTLkRhdGEuRGF0YUx1Y2t5QmFn",
+            "UmFuZG9tUHJvEiUKCXN0eWxlTGlzdBgKIAMoCzISLldTLkRhdGEuRGF0YVN0",
+            "eWxlEicKCmVmZmVjdExpc3QYCyADKAsyEy5XUy5EYXRhLkRhdGFFZmZlY3QS",
+            "JQoJbGV2ZWxMaXN0GAwgAygLMhIuV1MuRGF0YS5EYXRhTGV2ZWwSPwoWbHVj",
+            "a3lCYWdSYW5kb21Db2luTGlzdBgNIAMoCzIfLldTLkRhdGEuRGF0YUx1Y2t5",
+            "QmFnUmFuZG9tQ29pbhIjCgh0b29sTGlzdBgOIAMoCzIRLldTLkRhdGEuRGF0",
+            "YVRvb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::WS.Data.DataLuckyBagUserTypeReflection.Descriptor, global::WS.Data.DataGlobalReflection.Descriptor, global::WS.Data.DataLetterReflection.Descriptor, global::WS.Data.DataPaymentReflection.Descriptor, global::WS.Data.DataLevelWordsReflection.Descriptor, global::WS.Data.DataPieceReflection.Descriptor, global::WS.Data.DataSignInReflection.Descriptor, global::WS.Data.DataLuckyBagRandomProReflection.Descriptor, global::WS.Data.DataStyleReflection.Descriptor, global::WS.Data.DataEffectReflection.Descriptor, global::WS.Data.DataLevelReflection.Descriptor, global::WS.Data.DataLuckyBagRandomCoinReflection.Descriptor, global::WS.Data.DataLuckyBagShowReflection.Descriptor, global::WS.Data.DataToolReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::WS.Data.DataLuckyBagUserTypeReflection.Descriptor, global::WS.Data.DataGlobalReflection.Descriptor, global::WS.Data.DataLuckyBagShowDataReflection.Descriptor, global::WS.Data.DataLetterReflection.Descriptor, global::WS.Data.DataPaymentReflection.Descriptor, global::WS.Data.DataLevelWordsReflection.Descriptor, global::WS.Data.DataPieceReflection.Descriptor, global::WS.Data.DataSignInReflection.Descriptor, global::WS.Data.DataLuckyBagRandomProReflection.Descriptor, global::WS.Data.DataStyleReflection.Descriptor, global::WS.Data.DataEffectReflection.Descriptor, global::WS.Data.DataLevelReflection.Descriptor, global::WS.Data.DataLuckyBagRandomCoinReflection.Descriptor, global::WS.Data.DataToolReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::WS.Data.Constance), global::WS.Data.Constance.Parser, new[]{ "LuckyBagUserTypeList", "GlobalList", "LetterList", "PaymentList", "LevelWordsList", "PieceList", "SignInList", "LuckyBagRandomProList", "StyleList", "EffectList", "LevelList", "LuckyBagRandomCoinList", "LuckyBagShowList", "ToolList" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::WS.Data.Constance), global::WS.Data.Constance.Parser, new[]{ "LuckyBagUserTypeList", "GlobalList", "LuckyBagShowDataList", "LetterList", "PaymentList", "LevelWordsList", "PieceList", "SignInList", "LuckyBagRandomProList", "StyleList", "EffectList", "LevelList", "LuckyBagRandomCoinList", "ToolList" }, null, null, null)
           }));
     }
     #endregion
@@ -81,6 +81,7 @@ namespace WS.Data {
     public Constance(Constance other) : this() {
       luckyBagUserTypeList_ = other.luckyBagUserTypeList_.Clone();
       globalList_ = other.globalList_.Clone();
+      luckyBagShowDataList_ = other.luckyBagShowDataList_.Clone();
       letterList_ = other.letterList_.Clone();
       paymentList_ = other.paymentList_.Clone();
       levelWordsList_ = other.levelWordsList_.Clone();
@@ -91,7 +92,6 @@ namespace WS.Data {
       effectList_ = other.effectList_.Clone();
       levelList_ = other.levelList_.Clone();
       luckyBagRandomCoinList_ = other.luckyBagRandomCoinList_.Clone();
-      luckyBagShowList_ = other.luckyBagShowList_.Clone();
       toolList_ = other.toolList_.Clone();
     }
 
@@ -120,10 +120,20 @@ namespace WS.Data {
       get { return globalList_; }
     }
 
+    /// <summary>Field number for the "luckyBagShowDataList" field.</summary>
+    public const int LuckyBagShowDataListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::WS.Data.DataLuckyBagShowData> _repeated_luckyBagShowDataList_codec
+        = pb::FieldCodec.ForMessage(26, global::WS.Data.DataLuckyBagShowData.Parser);
+    private readonly pbc::RepeatedField<global::WS.Data.DataLuckyBagShowData> luckyBagShowDataList_ = new pbc::RepeatedField<global::WS.Data.DataLuckyBagShowData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::WS.Data.DataLuckyBagShowData> LuckyBagShowDataList {
+      get { return luckyBagShowDataList_; }
+    }
+
     /// <summary>Field number for the "letterList" field.</summary>
-    public const int LetterListFieldNumber = 3;
+    public const int LetterListFieldNumber = 4;
     private static readonly pb::FieldCodec<global::WS.Data.DataLetter> _repeated_letterList_codec
-        = pb::FieldCodec.ForMessage(26, global::WS.Data.DataLetter.Parser);
+        = pb::FieldCodec.ForMessage(34, global::WS.Data.DataLetter.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLetter> letterList_ = new pbc::RepeatedField<global::WS.Data.DataLetter>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLetter> LetterList {
@@ -131,9 +141,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "paymentList" field.</summary>
-    public const int PaymentListFieldNumber = 4;
+    public const int PaymentListFieldNumber = 5;
     private static readonly pb::FieldCodec<global::WS.Data.DataPayment> _repeated_paymentList_codec
-        = pb::FieldCodec.ForMessage(34, global::WS.Data.DataPayment.Parser);
+        = pb::FieldCodec.ForMessage(42, global::WS.Data.DataPayment.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataPayment> paymentList_ = new pbc::RepeatedField<global::WS.Data.DataPayment>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataPayment> PaymentList {
@@ -141,9 +151,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "levelWordsList" field.</summary>
-    public const int LevelWordsListFieldNumber = 5;
+    public const int LevelWordsListFieldNumber = 6;
     private static readonly pb::FieldCodec<global::WS.Data.DataLevelWords> _repeated_levelWordsList_codec
-        = pb::FieldCodec.ForMessage(42, global::WS.Data.DataLevelWords.Parser);
+        = pb::FieldCodec.ForMessage(50, global::WS.Data.DataLevelWords.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLevelWords> levelWordsList_ = new pbc::RepeatedField<global::WS.Data.DataLevelWords>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLevelWords> LevelWordsList {
@@ -151,9 +161,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "pieceList" field.</summary>
-    public const int PieceListFieldNumber = 6;
+    public const int PieceListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::WS.Data.DataPiece> _repeated_pieceList_codec
-        = pb::FieldCodec.ForMessage(50, global::WS.Data.DataPiece.Parser);
+        = pb::FieldCodec.ForMessage(58, global::WS.Data.DataPiece.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataPiece> pieceList_ = new pbc::RepeatedField<global::WS.Data.DataPiece>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataPiece> PieceList {
@@ -161,9 +171,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "signInList" field.</summary>
-    public const int SignInListFieldNumber = 7;
+    public const int SignInListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::WS.Data.DataSignIn> _repeated_signInList_codec
-        = pb::FieldCodec.ForMessage(58, global::WS.Data.DataSignIn.Parser);
+        = pb::FieldCodec.ForMessage(66, global::WS.Data.DataSignIn.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataSignIn> signInList_ = new pbc::RepeatedField<global::WS.Data.DataSignIn>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataSignIn> SignInList {
@@ -171,9 +181,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "luckyBagRandomProList" field.</summary>
-    public const int LuckyBagRandomProListFieldNumber = 8;
+    public const int LuckyBagRandomProListFieldNumber = 9;
     private static readonly pb::FieldCodec<global::WS.Data.DataLuckyBagRandomPro> _repeated_luckyBagRandomProList_codec
-        = pb::FieldCodec.ForMessage(66, global::WS.Data.DataLuckyBagRandomPro.Parser);
+        = pb::FieldCodec.ForMessage(74, global::WS.Data.DataLuckyBagRandomPro.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomPro> luckyBagRandomProList_ = new pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomPro>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomPro> LuckyBagRandomProList {
@@ -181,9 +191,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "styleList" field.</summary>
-    public const int StyleListFieldNumber = 9;
+    public const int StyleListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::WS.Data.DataStyle> _repeated_styleList_codec
-        = pb::FieldCodec.ForMessage(74, global::WS.Data.DataStyle.Parser);
+        = pb::FieldCodec.ForMessage(82, global::WS.Data.DataStyle.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataStyle> styleList_ = new pbc::RepeatedField<global::WS.Data.DataStyle>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataStyle> StyleList {
@@ -191,9 +201,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "effectList" field.</summary>
-    public const int EffectListFieldNumber = 10;
+    public const int EffectListFieldNumber = 11;
     private static readonly pb::FieldCodec<global::WS.Data.DataEffect> _repeated_effectList_codec
-        = pb::FieldCodec.ForMessage(82, global::WS.Data.DataEffect.Parser);
+        = pb::FieldCodec.ForMessage(90, global::WS.Data.DataEffect.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataEffect> effectList_ = new pbc::RepeatedField<global::WS.Data.DataEffect>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataEffect> EffectList {
@@ -201,9 +211,9 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "levelList" field.</summary>
-    public const int LevelListFieldNumber = 11;
+    public const int LevelListFieldNumber = 12;
     private static readonly pb::FieldCodec<global::WS.Data.DataLevel> _repeated_levelList_codec
-        = pb::FieldCodec.ForMessage(90, global::WS.Data.DataLevel.Parser);
+        = pb::FieldCodec.ForMessage(98, global::WS.Data.DataLevel.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLevel> levelList_ = new pbc::RepeatedField<global::WS.Data.DataLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLevel> LevelList {
@@ -211,23 +221,13 @@ namespace WS.Data {
     }
 
     /// <summary>Field number for the "luckyBagRandomCoinList" field.</summary>
-    public const int LuckyBagRandomCoinListFieldNumber = 12;
+    public const int LuckyBagRandomCoinListFieldNumber = 13;
     private static readonly pb::FieldCodec<global::WS.Data.DataLuckyBagRandomCoin> _repeated_luckyBagRandomCoinList_codec
-        = pb::FieldCodec.ForMessage(98, global::WS.Data.DataLuckyBagRandomCoin.Parser);
+        = pb::FieldCodec.ForMessage(106, global::WS.Data.DataLuckyBagRandomCoin.Parser);
     private readonly pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomCoin> luckyBagRandomCoinList_ = new pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomCoin>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::WS.Data.DataLuckyBagRandomCoin> LuckyBagRandomCoinList {
       get { return luckyBagRandomCoinList_; }
-    }
-
-    /// <summary>Field number for the "luckyBagShowList" field.</summary>
-    public const int LuckyBagShowListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::WS.Data.DataLuckyBagShow> _repeated_luckyBagShowList_codec
-        = pb::FieldCodec.ForMessage(106, global::WS.Data.DataLuckyBagShow.Parser);
-    private readonly pbc::RepeatedField<global::WS.Data.DataLuckyBagShow> luckyBagShowList_ = new pbc::RepeatedField<global::WS.Data.DataLuckyBagShow>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::WS.Data.DataLuckyBagShow> LuckyBagShowList {
-      get { return luckyBagShowList_; }
     }
 
     /// <summary>Field number for the "toolList" field.</summary>
@@ -255,6 +255,7 @@ namespace WS.Data {
       }
       if(!luckyBagUserTypeList_.Equals(other.luckyBagUserTypeList_)) return false;
       if(!globalList_.Equals(other.globalList_)) return false;
+      if(!luckyBagShowDataList_.Equals(other.luckyBagShowDataList_)) return false;
       if(!letterList_.Equals(other.letterList_)) return false;
       if(!paymentList_.Equals(other.paymentList_)) return false;
       if(!levelWordsList_.Equals(other.levelWordsList_)) return false;
@@ -265,7 +266,6 @@ namespace WS.Data {
       if(!effectList_.Equals(other.effectList_)) return false;
       if(!levelList_.Equals(other.levelList_)) return false;
       if(!luckyBagRandomCoinList_.Equals(other.luckyBagRandomCoinList_)) return false;
-      if(!luckyBagShowList_.Equals(other.luckyBagShowList_)) return false;
       if(!toolList_.Equals(other.toolList_)) return false;
       return true;
     }
@@ -275,6 +275,7 @@ namespace WS.Data {
       int hash = 1;
       hash ^= luckyBagUserTypeList_.GetHashCode();
       hash ^= globalList_.GetHashCode();
+      hash ^= luckyBagShowDataList_.GetHashCode();
       hash ^= letterList_.GetHashCode();
       hash ^= paymentList_.GetHashCode();
       hash ^= levelWordsList_.GetHashCode();
@@ -285,7 +286,6 @@ namespace WS.Data {
       hash ^= effectList_.GetHashCode();
       hash ^= levelList_.GetHashCode();
       hash ^= luckyBagRandomCoinList_.GetHashCode();
-      hash ^= luckyBagShowList_.GetHashCode();
       hash ^= toolList_.GetHashCode();
       return hash;
     }
@@ -299,6 +299,7 @@ namespace WS.Data {
     public void WriteTo(pb::CodedOutputStream output) {
       luckyBagUserTypeList_.WriteTo(output, _repeated_luckyBagUserTypeList_codec);
       globalList_.WriteTo(output, _repeated_globalList_codec);
+      luckyBagShowDataList_.WriteTo(output, _repeated_luckyBagShowDataList_codec);
       letterList_.WriteTo(output, _repeated_letterList_codec);
       paymentList_.WriteTo(output, _repeated_paymentList_codec);
       levelWordsList_.WriteTo(output, _repeated_levelWordsList_codec);
@@ -309,7 +310,6 @@ namespace WS.Data {
       effectList_.WriteTo(output, _repeated_effectList_codec);
       levelList_.WriteTo(output, _repeated_levelList_codec);
       luckyBagRandomCoinList_.WriteTo(output, _repeated_luckyBagRandomCoinList_codec);
-      luckyBagShowList_.WriteTo(output, _repeated_luckyBagShowList_codec);
       toolList_.WriteTo(output, _repeated_toolList_codec);
     }
 
@@ -318,6 +318,7 @@ namespace WS.Data {
       int size = 0;
       size += luckyBagUserTypeList_.CalculateSize(_repeated_luckyBagUserTypeList_codec);
       size += globalList_.CalculateSize(_repeated_globalList_codec);
+      size += luckyBagShowDataList_.CalculateSize(_repeated_luckyBagShowDataList_codec);
       size += letterList_.CalculateSize(_repeated_letterList_codec);
       size += paymentList_.CalculateSize(_repeated_paymentList_codec);
       size += levelWordsList_.CalculateSize(_repeated_levelWordsList_codec);
@@ -328,7 +329,6 @@ namespace WS.Data {
       size += effectList_.CalculateSize(_repeated_effectList_codec);
       size += levelList_.CalculateSize(_repeated_levelList_codec);
       size += luckyBagRandomCoinList_.CalculateSize(_repeated_luckyBagRandomCoinList_codec);
-      size += luckyBagShowList_.CalculateSize(_repeated_luckyBagShowList_codec);
       size += toolList_.CalculateSize(_repeated_toolList_codec);
       return size;
     }
@@ -340,6 +340,7 @@ namespace WS.Data {
       }
       luckyBagUserTypeList_.Add(other.luckyBagUserTypeList_);
       globalList_.Add(other.globalList_);
+      luckyBagShowDataList_.Add(other.luckyBagShowDataList_);
       letterList_.Add(other.letterList_);
       paymentList_.Add(other.paymentList_);
       levelWordsList_.Add(other.levelWordsList_);
@@ -350,7 +351,6 @@ namespace WS.Data {
       effectList_.Add(other.effectList_);
       levelList_.Add(other.levelList_);
       luckyBagRandomCoinList_.Add(other.luckyBagRandomCoinList_);
-      luckyBagShowList_.Add(other.luckyBagShowList_);
       toolList_.Add(other.toolList_);
     }
 
@@ -371,47 +371,47 @@ namespace WS.Data {
             break;
           }
           case 26: {
-            letterList_.AddEntriesFrom(input, _repeated_letterList_codec);
+            luckyBagShowDataList_.AddEntriesFrom(input, _repeated_luckyBagShowDataList_codec);
             break;
           }
           case 34: {
-            paymentList_.AddEntriesFrom(input, _repeated_paymentList_codec);
+            letterList_.AddEntriesFrom(input, _repeated_letterList_codec);
             break;
           }
           case 42: {
-            levelWordsList_.AddEntriesFrom(input, _repeated_levelWordsList_codec);
+            paymentList_.AddEntriesFrom(input, _repeated_paymentList_codec);
             break;
           }
           case 50: {
-            pieceList_.AddEntriesFrom(input, _repeated_pieceList_codec);
+            levelWordsList_.AddEntriesFrom(input, _repeated_levelWordsList_codec);
             break;
           }
           case 58: {
-            signInList_.AddEntriesFrom(input, _repeated_signInList_codec);
+            pieceList_.AddEntriesFrom(input, _repeated_pieceList_codec);
             break;
           }
           case 66: {
-            luckyBagRandomProList_.AddEntriesFrom(input, _repeated_luckyBagRandomProList_codec);
+            signInList_.AddEntriesFrom(input, _repeated_signInList_codec);
             break;
           }
           case 74: {
-            styleList_.AddEntriesFrom(input, _repeated_styleList_codec);
+            luckyBagRandomProList_.AddEntriesFrom(input, _repeated_luckyBagRandomProList_codec);
             break;
           }
           case 82: {
-            effectList_.AddEntriesFrom(input, _repeated_effectList_codec);
+            styleList_.AddEntriesFrom(input, _repeated_styleList_codec);
             break;
           }
           case 90: {
-            levelList_.AddEntriesFrom(input, _repeated_levelList_codec);
+            effectList_.AddEntriesFrom(input, _repeated_effectList_codec);
             break;
           }
           case 98: {
-            luckyBagRandomCoinList_.AddEntriesFrom(input, _repeated_luckyBagRandomCoinList_codec);
+            levelList_.AddEntriesFrom(input, _repeated_levelList_codec);
             break;
           }
           case 106: {
-            luckyBagShowList_.AddEntriesFrom(input, _repeated_luckyBagShowList_codec);
+            luckyBagRandomCoinList_.AddEntriesFrom(input, _repeated_luckyBagRandomCoinList_codec);
             break;
           }
           case 114: {

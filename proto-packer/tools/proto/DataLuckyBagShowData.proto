@@ -1,6 +1,6 @@
 syntax = "proto3";
 package WS.Data;
-message DataLuckyBagShow
+message DataLuckyBagShowData
 {
 	//ID
 	int32 id = 1;
