@@ -61,6 +61,7 @@ public class Pipeline {
                         exceldesc2bytes();
                         proto2code();
                         cancel();
+                        JOptionPane.showMessageDialog(MainPanel.GetInstance(), log, "信息！", 0);
                         JOptionPane.showMessageDialog(MainPanel.GetInstance(), "完成!");
                         Runtime.getRuntime().exit(0);
                     } catch (Exception e) {
@@ -269,12 +270,13 @@ public class Pipeline {
                                 addMessage("重复的Id：" + id.toString());
                             } else {
                                 builder.addRepeatedField(mfield, msg);
+                                list.add(id);
                             }
                         }
                     }
 
                 } else {
-                    System.out.println("null message :: index=" + row);
+                    addMessage("null message :: name=" + fileName + ",index=" + row);
                 }
             }
         }
