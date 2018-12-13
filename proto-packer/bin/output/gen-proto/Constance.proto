@@ -1,5 +1,0 @@
-import "Part.proto";
-message Constance
-{
-	repeated Part partList = 1;
-}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+package WS.Data;
+message DataEffect
+{
+	//唯一标识
+	int32 id = 1;
+	//文件名
+	string fileName = 3;
+	//时长（秒,-1循环播放）
+	float duration = 4;
+	//类型（1创建新的。2使用现有的）
+	int32 type = 5;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package WS.Data;
+message DataTurntableDailyBouns
+{
+	//ID
+	int32 id = 1;
+	//奖品类型
+	int32 PrizeType = 2;
+	//奖品数量
+	int32 PrizeOneNum = 3;
+	//权重
+	int32 weight = 4;
+	//是否限时
+	int32 TimeLimit = 5;
+}

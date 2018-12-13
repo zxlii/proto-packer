@@ -1,0 +1,15 @@
+syntax = "proto3";
+package WS.Data;
+message DataTurntableLuckyWheelPrize
+{
+	//ID
+	int32 id = 1;
+	//奖励类别
+	string desc = 2;
+	//数量
+	int32 num = 3;
+	//系数
+	float coefficient = 4;
+	//奖励类型
+	int32 type = 5;
+}

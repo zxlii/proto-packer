@@ -1,0 +1,13 @@
+syntax = "proto3";
+package WS.Data;
+message DataDailyPuzzleLevel
+{
+	//唯一标识
+	int32 id = 1;
+	//数据
+	string data = 2;
+	//提示
+	string clue = 3;
+	//提前显示的单词
+	string showletter = 4;
+}

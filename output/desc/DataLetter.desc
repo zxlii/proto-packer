@@ -1,15 +1,0 @@
-
-¤
-DataLetter.protoWS.Data"þ
-
-DataLetter
-id (Rid
-letter (	Rletter
-type (Rtype&
-unlockLetterId (RunlockLetterId*
-horizentalLinkId (RhorizentalLinkId&
-verticalLinkId (RverticalLinkId
-pieceId (RpieceId
-
-pieceIndex (R
-pieceIndexbproto3

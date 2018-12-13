@@ -1,0 +1,13 @@
+syntax = "proto3";
+package WS.Data;
+message DataTurntableLuckyWheelUserType
+{
+	//ID
+	int32 id = 1;
+	//消费下限
+	float CostlowerLimit = 2;
+	//消费上限
+	float CostUpperLimit = 3;
+	//单关消耗道具价值
+	int32 ToolsCost = 4;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package WS.Data;
+message DataTurntableLuckyWheelWeight
+{
+	//ID
+	int32 id = 1;
+	//奖励类别
+	string desc = 2;
+	//数量
+	int32 num = 3;
+	//基础权重
+	int32 weight = 4;
+	//权重调整值
+	int32 adjustmentWeight = 5;
+}

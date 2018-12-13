@@ -1,0 +1,43 @@
+syntax = "proto3";
+package WS.Data;
+import "DataTurntableLuckyWheelWeight.proto";
+import "DataLuckyBagUserType.proto";
+import "DataTurntableLuckyWheelUserType.proto";
+import "DataDailyPuzzleLevel.proto";
+import "DataTurntableDailyBouns.proto";
+import "DataTurntableLuckyWheelPrize.proto";
+import "DataGlobal.proto";
+import "DataLetter.proto";
+import "DataPayment.proto";
+import "DataLevelWords.proto";
+import "DataPiece.proto";
+import "DataSignIn.proto";
+import "DataLuckyBagRandomPro.proto";
+import "DataStyle.proto";
+import "DataEffect.proto";
+import "DataLuckyBagRandomCoin.proto";
+import "DataLevel.proto";
+import "DataLuckyBagShow.proto";
+import "DataTool.proto";
+message Constance
+{
+	repeated DataTurntableLuckyWheelWeight turntableLuckyWheelWeightList = 1;
+	repeated DataLuckyBagUserType luckyBagUserTypeList = 2;
+	repeated DataTurntableLuckyWheelUserType turntableLuckyWheelUserTypeList = 3;
+	repeated DataDailyPuzzleLevel dailyPuzzleLevelList = 4;
+	repeated DataTurntableDailyBouns turntableDailyBounsList = 5;
+	repeated DataTurntableLuckyWheelPrize turntableLuckyWheelPrizeList = 6;
+	repeated DataGlobal globalList = 7;
+	repeated DataLetter letterList = 8;
+	repeated DataPayment paymentList = 9;
+	repeated DataLevelWords levelWordsList = 10;
+	repeated DataPiece pieceList = 11;
+	repeated DataSignIn signInList = 12;
+	repeated DataLuckyBagRandomPro luckyBagRandomProList = 13;
+	repeated DataStyle styleList = 14;
+	repeated DataEffect effectList = 15;
+	repeated DataLuckyBagRandomCoin luckyBagRandomCoinList = 16;
+	repeated DataLevel levelList = 17;
+	repeated DataLuckyBagShow luckyBagShowList = 18;
+	repeated DataTool toolList = 19;
+}
